@@ -46,7 +46,7 @@ export default class RSSGenerator {
 			result += "<h1>" + meeting.meetingName.trim() + "</h1>\n";
 			result += "No agenda found.\n";
 		} else {
-			result += RetrievalManager.fetchAgenda(meeting.agendaLink);
+			result += await RetrievalManager.fetchAgenda(meeting.agendaLink);
 		}
 
 		result += "<h2>Supporting Documents</h2>\n";
