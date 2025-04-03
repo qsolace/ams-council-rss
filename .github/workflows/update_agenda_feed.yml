@@ -9,31 +9,34 @@ on:
     - cron: "15,45 * * * 1-3"
   workflow_dispatch:
 
-    jobs:
-      update-agenda-rss-feed:
-        runs_on: ubuntu-latest
+jobs:
+  update-agenda-rss-feed:
+    name: Update Agenda RSS
+    runs_on: ubuntu-latest
 
-        steps:
-          - name: Checkout Repository
-            uses: actions/checkout@v4
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-          - name: Set Up JS
-            uses: actions/setup-node@v4
+      - name: Set Up JS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 23
 
-          - name: Build Project
-            run: |
-              npm ci
-              tsc
+      - name: Build Project
+        run: |
+          npm ci
+          tsc
 
-          - name: Generate Feed
-            run: |
-              set -e
-              node dist/src/App.js
+      - name: Generate Feed
+        run: |
+          set -e
+          node dist/src/App.js
 
-          - name: Commit and push updated feed
-            run: |
-              git config --global user.name 'github-actions[bot]'
-              git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-              git add .
-              git commit -m 'Update Agenda RSS feed'
-              git push
+      - name: Commit and push updated feed
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add .
+          git commit -m 'Update Agenda RSS feed'
+          git push
