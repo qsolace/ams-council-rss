@@ -55,7 +55,7 @@ export default class RSSGenerator {
 			if (document.link === HTMLParser.NO_LINK) {
 				result += "<li>" + document.text + "</li>";
 			} else {
-				result += "<li>" + "<a href='" + document.link + "'>" + document.text + "</a></li>";
+				result += "<li>" + "<a href='" + document.link + "'>" + document.text + "</a></li>\n";
 			}
 		}
 
