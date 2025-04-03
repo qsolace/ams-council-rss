@@ -1,0 +1,55 @@
+{
+	"name": "ams-council-rss",
+	"description": "An RSS Feed generator for the Alma Mater Society's council agenda",
+	"homepage": "",
+	"author": "Quyen Schroeder",
+	"private": true,
+	"version": "1.0.0",
+	"engines": {
+		"node": ">= 23 < 24"
+	},
+	"dependencies": {
+		"cors": "2.8.5",
+		"decimal.js": "10.4.3",
+		"express": "4.18.2",
+		"fs-extra": "11.1.0",
+		"http-status-codes": "2.3.0",
+		"jszip": "3.10.1",
+		"parse5": "7.1.2",
+		"node-fetch": "3.3.2",
+		"crawler-request": "1.2.2"
+	},
+	"devDependencies": {
+		"@tsconfig/node23": "23.0.0",
+		"@types/chai": "4.3.0",
+		"@types/chai-as-promised": "7.1.4",
+		"@types/cors": "2.8.12",
+		"@types/express": "5.0.0",
+		"@types/fs-extra": "11.0.4",
+		"@types/mocha": "10.0.1",
+		"@types/node": "22.10.3",
+		"@types/supertest": "6.0.2",
+		"@typescript-eslint/eslint-plugin": "8.19.0",
+		"@typescript-eslint/parser": "8.19.0",
+		"chai": "4.3.4",
+		"chai-as-promised": "7.1.1",
+		"chai-http": "4.4.0",
+		"eslint": "8.57.0",
+		"eslint-config-prettier": "9.1.0",
+		"mocha": "11.0.1",
+		"nyc": "17.1.0",
+		"prettier": "3.4.2",
+		"supertest": "7.0.0",
+		"ts-node": "10.9.2",
+		"typescript": "5.7.2"
+	},
+	"scripts": {
+		"postinstall": "git config core.hooksPath .githooks",
+		"cover": "nyc --reporter text --reporter html yarn run test",
+		"build": "tsc && yarn prettier:check",
+		"test": "mocha --require ts-node/register --timeout 5000 --extension .spec.ts --recursive test",
+		"prettier:check": "prettier src/**/*.ts test/**/*.ts --check",
+		"prettier:fix": "prettier src/**/*.ts test/**/*.ts --write",
+		"start": "ts-node src/App.ts"
+	}
+}
