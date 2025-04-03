@@ -3,6 +3,8 @@ import RetrievalManager from "./RetrievalManager";
 
 // generator for the AMS agenda RSS feed
 export default class RSSGenerator {
+	private static SourceURL = "https://qsolace.github.io/ams-council-rss/feeds/agenda-feed.rss";
+
 	private static header: string =
 		'<?xml version="1.0" encoding="UTF-8" ?>\n' +
 		'<rss version="2.0"\n' +
@@ -11,7 +13,7 @@ export default class RSSGenerator {
 		"<channel>\n" +
 		"  <title>AMS Council Agenda Feed</title>\n" +
 		"  <link>https://www.ams.ubc.ca/about-us/student-council/agendas-presentations-minutes/</link>\n" +
-		"  <description>A feed that parses the agendas for AMS Council</description>";
+		"  <description>A feed that parses the agendas for AMS Council</description>\n";
 
 	private static footer: string = "</channel>  </rss>";
 
@@ -19,6 +21,7 @@ export default class RSSGenerator {
 	public static async writeFeed(meetings: AMSMeeting[]) {
 		let result = "";
 		result = result + this.header;
+		result = result + this.writeTag("lastBuildDate", new Date().toUTCString());
 		for (const meeting of meetings) {
 			result += await this.writeItem(meeting);
 		}
@@ -34,9 +37,28 @@ export default class RSSGenerator {
 		result = result + this.writeTag("guid", meeting.meetingName, 'isPermaLink="false"');
 		result = result + this.writeTag("link", this.cleanAgendaLink(meeting.agendaLink));
 		result = result + this.writeTag("description", this.writeDescription(meeting));
+		result = result + this.writeTag("source", "Qsolace :)", 'url="' + RSSGenerator.SourceURL + '"');
+		result = result + this.writeTag("pubDate", this.parseDate(meeting.meetingName));
 		result = result + this.writeTag("content:encoded", await this.writeBody(meeting));
 		result = result + "</item>\n";
 		return result;
+	}
+
+	// EFFECT: returns a string corresponding to the date in the title, optionally offset by the given number of days
+	public static parseDate(title: string, offsetDays:number = 0): string {
+		let reducedInput = title.substring(title.indexOf("–") + 1);
+		reducedInput = reducedInput.split("at").join();
+		if (reducedInput.includes("pm")) {
+			reducedInput = reducedInput.substring(0, reducedInput.indexOf("pm"));
+		}
+		const result = Date.parse(reducedInput);
+		if (isNaN(result)) {
+			return new Date().toUTCString();
+		} else {
+			const date = new Date(result);
+			date.setDate(date.getDate() - offsetDays)
+			return date.toUTCString();
+		}
 	}
 
 	// EFFECTS: returns the body of a meeting, including a formatted agenda and a list of supporting documents
