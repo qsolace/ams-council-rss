@@ -1,6 +1,6 @@
 # Feeds
 This directory contains all the RSS feeds related to AMS Council.
-- `agenda-feed.rss` includes the full text of AMS Council agendas and links to supporting documents. It is updated twice a day Thursday-Sunday and twice an hour Monday-Wednesday (to account for retrieving agendas in the days before a wednesday council meeting being more timely)
+- `agenda-feed.rss` includes the full text of AMS Council agendas and links to supporting documents. It is updated once a day Thursday-Sunday and every three hours Monday-Wednesday (to account for retrieving agendas in the days before a Wednesday council meeting being more timely)
 
 ## Future Feeds
 The following feeds are being considered for future implementation, along with some excuses for why they probably won't be implemented:
