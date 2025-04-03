@@ -5,13 +5,17 @@ xmlns:content="http://purl.org/rss/1.0/modules/content/">
 <channel>
   <title>AMS Council Agenda Feed</title>
   <link>https://www.ams.ubc.ca/about-us/student-council/agendas-presentations-minutes/</link>
-  <description>A feed that parses the agendas for AMS Council</description><item>
+  <description>A feed that parses the agendas for AMS Council</description>
+<lastBuildDate >Thu, 03 Apr 2025 23:30:59 GMT</lastBuildDate>
+<item>
 <title >Council Agenda – March 26, 2025 at 6:00 PM
 </title>
 <guid isPermaLink="false">Council Agenda – March 26, 2025 at 6:00 PM
 </guid>
 <link >https://www.ams.ubc.ca/about-us/student-council/agendas-presentations-minutes/</link>
 <description >No linked agenda. 9 supporting documents.</description>
+<source url="https://qsolace.github.io/ams-council-rss/feeds/agenda-feed.rss">Qsolace :)</source>
+<pubDate >Wed, 26 Mar 2025 18:00:00 GMT</pubDate>
 <content:encoded >
 <![CDATA[
 <h1>Council Agenda – March 26, 2025 at 6:00 PM</h1>
@@ -34,6 +38,8 @@ No agenda found.
 <guid isPermaLink="false">Council Agenda (Informal) – March 5, 2025 at 6pm Via Zoom: </guid>
 <link >https://www.ams.ubc.ca/about-us/student-council/agendas-presentations-minutes/</link>
 <description >No linked agenda. 3 supporting documents.</description>
+<source url="https://qsolace.github.io/ams-council-rss/feeds/agenda-feed.rss">Qsolace :)</source>
+<pubDate >Wed, 05 Mar 2025 00:00:00 GMT</pubDate>
 <content:encoded >
 <![CDATA[
 <h1>Council Agenda (Informal) – March 5, 2025 at 6pm Via Zoom:</h1>
@@ -47,6 +53,8 @@ No agenda found.
 <guid isPermaLink="false">AMS Council Agenda – February 26, 2025 at 6:00 PM</guid>
 <link >https://www.ams.ubc.ca/wp-content/uploads/2025/02/Student-Council-Agenda_2025-02-26.pdf</link>
 <description >Successfully linked agenda. 13 supporting documents.</description>
+<source url="https://qsolace.github.io/ams-council-rss/feeds/agenda-feed.rss">Qsolace :)</source>
+<pubDate >Wed, 26 Feb 2025 18:00:00 GMT</pubDate>
 <content:encoded >
 <![CDATA[
 <h1>AMS Council - February 26, 2025   </h1>
