@@ -87,6 +87,19 @@ export default class AgendaPDFFormatter {
 				continue;
 			}
 
+			if (this.isInitialLowercase(line) && this.htmlLines.length != 0) {
+				let previous:string;
+				try {
+					previous = <string>this.htmlLines.pop()
+				} catch (_) {
+					previous = ""
+				}
+				let resultLine: string = previous.split("</p>")[0]
+				resultLine+= line + "</p>"
+				this.htmlLines.push(resultLine)
+				continue;
+			}
+
 
 			this.htmlLines.push("<p>" + line + "</p>");
 		}
@@ -113,6 +126,10 @@ export default class AgendaPDFFormatter {
 			}
 			this.htmlLines[i] = htmlLine;
 		}
+	}
+
+	private isInitialLowercase(line: string): boolean {
+		return line.charAt(0) != line.charAt(0).toUpperCase();
 	}
 
 	// EFFECTS: returns true if the line starts with a double quotation mark, false otherwise
