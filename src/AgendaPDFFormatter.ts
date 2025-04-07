@@ -88,18 +88,17 @@ export default class AgendaPDFFormatter {
 			}
 
 			if (this.isInitialLowercase(line) && this.htmlLines.length != 0) {
-				let previous:string;
+				let previous: string;
 				try {
-					previous = <string>this.htmlLines.pop()
+					previous = <string>this.htmlLines.pop();
 				} catch (_) {
-					previous = ""
+					previous = "";
 				}
-				let resultLine: string = previous.split("</p>")[0]
-				resultLine+= line + "</p>"
-				this.htmlLines.push(resultLine)
+				let resultLine: string = previous.split("</p>")[0];
+				resultLine += line + "</p>";
+				this.htmlLines.push(resultLine);
 				continue;
 			}
-
 
 			this.htmlLines.push("<p>" + line + "</p>");
 		}
@@ -128,6 +127,7 @@ export default class AgendaPDFFormatter {
 		}
 	}
 
+	// EFFECTS: returns true if the line starts with a lowercase character
 	private isInitialLowercase(line: string): boolean {
 		return line.charAt(0) != line.charAt(0).toUpperCase();
 	}
@@ -144,13 +144,14 @@ export default class AgendaPDFFormatter {
 		return this.isEnd(line, quoteEndChars);
 	}
 
+	// EFFECTS: returns true if there is an open and closed parenthetical within the given line, false otherwise
 	private isCompleteParenthetical(line: string): boolean {
-		return this.isParentheticalStart(line) && this.isParentheticalEnd(line)
+		return this.isParentheticalStart(line) && this.isParentheticalEnd(line);
 	}
 
 	// EFFECTS: returns true if the line contains an open parenthesis or bracket, false otherwise
 	private isParentheticalStart(line: string): boolean {
-		const parentheticalStartChars: string[] = ['(', "["];
+		const parentheticalStartChars: string[] = ["(", "["];
 		for (const char of parentheticalStartChars) {
 			if (line.includes(char)) return true;
 		}
@@ -159,13 +160,14 @@ export default class AgendaPDFFormatter {
 
 	// EFFECTS: returns true if the line contains a closing parenthesis or bracket, false otherwise
 	private isParentheticalEnd(line: string): boolean {
-		const parentheticalEndChars: string[] = [')', "]"];
+		const parentheticalEndChars: string[] = [")", "]"];
 		for (const char of parentheticalEndChars) {
 			if (line.includes(char)) return true;
 		}
 		return false;
 	}
 
+	// EFFECTS: returns true if line ends with one of the strings in matchings
 	private isEnd(line: string, matchings: string[]): boolean {
 		for (let i = 0; i < matchings.length; i++) {
 			if (line.trim().endsWith(matchings[i])) {
@@ -175,6 +177,7 @@ export default class AgendaPDFFormatter {
 		return false;
 	}
 
+	// EFFECTS: returns true if line starts with one of the strings in matchings
 	private isStart(line: string, matchings: string[]): boolean {
 		for (let i = 0; i < matchings.length; i++) {
 			if (line.startsWith(matchings[i])) {
