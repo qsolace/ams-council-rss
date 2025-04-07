@@ -11,7 +11,7 @@ export default class RetrievalManager {
 	public static async fetchMeetingDocumentList(): Promise<AMSMeeting[]> {
 		const page = await OnlineRetriever.sendHTMLRequest(this.AMSAgendaLink);
 		const parser = new HTMLParser(page);
-		const allMeetings = parser.findInnerHTML("Council Agenda").parentNode;
+		const allMeetings = HTMLParser.findParentTag(parser.findInnerHTML("Council Agenda"), "ul");
 
 		return parser.parseDocumentList(allMeetings);
 	}

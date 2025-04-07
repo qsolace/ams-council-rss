@@ -23,6 +23,19 @@ export default class HTMLParser {
 		this.webpage = htmlDocument;
 	}
 
+	// EFFECTS: returns the parent node of the given HTML node with the given tag (a node is its own parent)
+	public static findParentTag(htmlNode: any, tag: string): any | null {
+		if (htmlNode.nodeName.includes(tag)) {
+			return htmlNode;
+		}
+
+		if (htmlNode.nodeName === "#document") {
+			return null;
+		}
+
+		return HTMLParser.findParentTag(htmlNode.parentNode, tag);
+	}
+
 	// EFFECT: returns the first htmlNode in the webpage that has
 	//             an inner text field which contains content
 	//         deeply traverses the webpage
