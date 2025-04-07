@@ -26,11 +26,14 @@ export default class AgendaPDFFormatter {
 		let firstLine: boolean = true;
 		let firstAgenda: boolean = true;
 		let inQuotation: boolean = false;
+		let inParenthesis: boolean = false;
 		this.htmlLines = [];
 		for (let i = 0; i < this.rawLines.length; i++) {
 			const line = this.rawLines[i];
 
-			if (firstLine && line.trim() != "") {
+			if (line.trim() === "") continue;
+
+			if (firstLine) {
 				firstLine = false;
 				this.htmlLines.push("<h1>" + line + "</h1>");
 				continue;
@@ -49,6 +52,7 @@ export default class AgendaPDFFormatter {
 				romanNumeral.increment();
 				alphaNumeral.reset();
 				inQuotation = false;
+				inParenthesis = false;
 				continue;
 			}
 
@@ -56,6 +60,7 @@ export default class AgendaPDFFormatter {
 				this.htmlLines.push("<h4>" + line + "</h4>");
 				alphaNumeral.increment();
 				inQuotation = false;
+				inParenthesis = false;
 				continue;
 			}
 
@@ -65,15 +70,23 @@ export default class AgendaPDFFormatter {
 				continue;
 			}
 
-			if (inQuotation) {
+			if (!this.isCompleteParenthetical(line) && this.isParentheticalStart(line)) {
+				inParenthesis = true;
+				this.htmlLines.push("<p>" + line);
+				continue;
+			}
+
+			if (inQuotation || inParenthesis) {
 				let ending = "";
-				if (this.isQuoteEnd(line)) {
+				if (this.isQuoteEnd(line) || this.isParentheticalEnd(line)) {
 					ending = "</p>";
 					inQuotation = false;
+					inParenthesis = false;
 				}
 				this.htmlLines.push(line + ending);
 				continue;
 			}
+
 
 			this.htmlLines.push("<p>" + line + "</p>");
 		}
@@ -105,19 +118,49 @@ export default class AgendaPDFFormatter {
 	// EFFECTS: returns true if the line starts with a double quotation mark, false otherwise
 	private isQuoteStart(line: string): boolean {
 		const quoteStartChars: string[] = ['"', "“"];
-		for (let i = 0; i < quoteStartChars.length; i++) {
-			if (line.startsWith(quoteStartChars[i])) {
+		return this.isStart(line, quoteStartChars);
+	}
+
+	// EFFECTS: returns true if the line ends with a double quotation mark, false otherwise
+	private isQuoteEnd(line: string): boolean {
+		const quoteEndChars: string[] = ['"', "”"];
+		return this.isEnd(line, quoteEndChars);
+	}
+
+	private isCompleteParenthetical(line: string): boolean {
+		return this.isParentheticalStart(line) && this.isParentheticalEnd(line)
+	}
+
+	// EFFECTS: returns true if the line contains an open parenthesis or bracket, false otherwise
+	private isParentheticalStart(line: string): boolean {
+		const parentheticalStartChars: string[] = ['(', "["];
+		for (const char of parentheticalStartChars) {
+			if (line.includes(char)) return true;
+		}
+		return false;
+	}
+
+	// EFFECTS: returns true if the line contains a closing parenthesis or bracket, false otherwise
+	private isParentheticalEnd(line: string): boolean {
+		const parentheticalEndChars: string[] = [')', "]"];
+		for (const char of parentheticalEndChars) {
+			if (line.includes(char)) return true;
+		}
+		return false;
+	}
+
+	private isEnd(line: string, matchings: string[]): boolean {
+		for (let i = 0; i < matchings.length; i++) {
+			if (line.trim().endsWith(matchings[i])) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	// EFFECTS: returns true if the line ends with a double quotation mark, false otherwise
-	private isQuoteEnd(line: string): boolean {
-		const quoteEndChars: string[] = ['"', "”"];
-		for (let i = 0; i < quoteEndChars.length; i++) {
-			if (line.trim().endsWith(quoteEndChars[i])) {
+	private isStart(line: string, matchings: string[]): boolean {
+		for (let i = 0; i < matchings.length; i++) {
+			if (line.startsWith(matchings[i])) {
 				return true;
 			}
 		}
