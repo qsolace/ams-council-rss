@@ -4,6 +4,8 @@ on:
   schedule:
     - cron: "47 0 * * *"
     - cron: "47 */6 * * 1-3"
+  workflow_dispatch:
+
 
 jobs:
   update-agenda-rss-feed:

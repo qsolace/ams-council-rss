@@ -45,7 +45,7 @@ export default class RSSGenerator {
 	}
 
 	// EFFECT: returns a string corresponding to the date in the title, optionally offset by the given number of days
-	public static parseDate(title: string, offsetDays:number = 0): string {
+	public static parseDate(title: string, offsetDays: number = 0): string {
 		let reducedInput = title.substring(title.indexOf("–") + 1);
 		reducedInput = reducedInput.split("at").join();
 		if (reducedInput.includes("pm")) {
@@ -56,7 +56,7 @@ export default class RSSGenerator {
 			return new Date().toUTCString();
 		} else {
 			const date = new Date(result);
-			date.setDate(date.getDate() - offsetDays)
+			date.setDate(date.getDate() - offsetDays);
 			return date.toUTCString();
 		}
 	}
