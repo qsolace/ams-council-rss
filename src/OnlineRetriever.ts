@@ -20,20 +20,3 @@ export default class OnlineRetriever {
 		});
 	}
 }
-
-// async function main() {
-//     // const page = new HTMLParser(await HTMLRetriever.sendHTMLRequest(HTMLRetriever.AMSUrl)).findInnerHTML("Council Agenda")
-//     let raw:string = await HTMLRetriever.sendPDFRequest("https://www.ams.ubc.ca/wp-content/uploads/2025/02/Student-Council-Agenda_2025-02-05.pdf");
-//     const formater = new PDFFormatter(raw)
-//
-//     const data = formater.toHtml()
-//
-//     fs.writeFile('out.html', data, (err: any) => {
-//
-//         // In case of a error throw err.
-//         if (err) throw err;
-//     })
-//     // console.log(page)
-// }
-//
-// main()
