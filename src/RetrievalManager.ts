@@ -1,6 +1,7 @@
 import OnlineRetriever from "./OnlineRetriever";
 import HTMLParser, { AMSMeeting } from "./HTMLParser";
 import AgendaPDFFormatter from "./AgendaPDFFormatter";
+import fs from "fs/promises";
 
 // manages calls to the AMS website
 export default class RetrievalManager {
@@ -15,9 +16,8 @@ export default class RetrievalManager {
 		try {
 			allMeetings = HTMLParser.findParentTag(parser.findInnerHTML("Council Agenda"), "ul");
 		} catch (e) {
-			return []
+			return [];
 		}
-
 
 		return parser.parseDocumentList(allMeetings);
 	}
@@ -29,5 +29,30 @@ export default class RetrievalManager {
 		const formater = new AgendaPDFFormatter(raw);
 
 		return formater.toHtml();
+	}
+
+	// REQUIRES: an agenda feed with a well-formed buildDate is at ./feeds/agenda-feed.rss
+	public static async hasUpdatedSinceLastBuild(): Promise<boolean> {
+		let buildDate = await fs
+			.readFile("../feeds/agenda-feed.rss", "utf-8")
+			.then((data) => {
+				const startKey = "<lastBuildDate >";
+				const endKey = "</lastBuildDate>";
+				const textDate = data.substring(data.indexOf(startKey) + startKey.length, data.lastIndexOf(endKey));
+				return new Date(textDate);
+			})
+			.catch(() => {
+				const earliestDate = -8640000000000000;
+				return new Date(earliestDate);
+			});
+
+		const pageDate = await OnlineRetriever.sendFileRequest(this.AMSAgendaLink + "/rss").then((data) => {
+			const startKey = "<lastBuildDate>";
+			const endKey = "</lastBuildDate>";
+			const textDate = data.substring(data.indexOf(startKey) + startKey.length, data.lastIndexOf(endKey));
+			return new Date(textDate);
+		});
+
+		return pageDate.getTime() > buildDate.getTime();
 	}
 }
