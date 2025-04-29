@@ -3,6 +3,9 @@ import fs from "fs";
 import RetrievalManager from "./RetrievalManager";
 
 async function main() {
+	if (!(await RetrievalManager.hasUpdatedSinceLastBuild())) {
+		return;
+	}
 	const documents = await RetrievalManager.fetchMeetingDocumentList();
 	if (documents.length === 0) return; // no documents found. preserve the previous meetings
 

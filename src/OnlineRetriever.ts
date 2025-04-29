@@ -13,6 +13,12 @@ export default class OnlineRetriever {
 		return parse5.parse(body);
 	}
 
+	// EFFECTS: returns the file at the given url
+	static async sendFileRequest(url: string): Promise<any> {
+		const response = await fetch(url);
+		return await response.text();
+	}
+
 	// EFFECTS: returns the text of the PDF at the given url
 	static async sendPDFRequest(url: string): Promise<string> {
 		return crawler(url).then(function (response: any): string {
