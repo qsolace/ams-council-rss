@@ -6,21 +6,20 @@ xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <title>AMS Council Agenda Feed</title>
   <link>https://www.ams.ubc.ca/about-us/student-council/agendas-presentations-minutes/</link>
   <description>A feed that parses the agendas for AMS Council</description>
-<lastBuildDate >Fri, 23 Jan 2026 02:50:21 GMT</lastBuildDate>
+<lastBuildDate >Sat, 24 Jan 2026 02:32:08 GMT</lastBuildDate>
 <item>
-<title >AMS Council Agenda – January 14, 2026 at 6:00 PM</title>
-<guid isPermaLink="false">AMS Council Agenda – January 14, 2026 at 6:00 PM</guid>
-<link >https://amsubc-my.sharepoint.com/:w:/g/personal/archasst_ams_ubc_ca/IQBWDM0EpWQ7Raz-nDtKCmx8AQE01EA12qDlOYPvWkbJgyc?e=hS86f8</link>
-<description >Successfully linked agenda. 2 supporting documents.</description>
+<title >AMS Council Agenda – January 24, 2026 at 5:00 PM</title>
+<guid isPermaLink="false">AMS Council Agenda – January 24, 2026 at 5:00 PM</guid>
+<link >https://amsubc-my.sharepoint.com/:w:/g/personal/archasst_ams_ubc_ca/IQBgj5xysu0uRbTK5n2mDMlTAerpcO_LQYaOtTlPLxgKrLI?e=algD7i</link>
+<description >Successfully linked agenda. 1 supporting documents.</description>
 <source url="https://qsolace.github.io/ams-council-rss/feeds/agenda-feed.rss">Qsolace :)</source>
-<pubDate >Wed, 14 Jan 2026 18:00:00 GMT</pubDate>
+<pubDate >Sat, 24 Jan 2026 17:00:00 GMT</pubDate>
 <content:encoded >
 <![CDATA[
 <h1>Redirecting</h1>
 <h2>Supporting Documents</h2>
 <ul>
-<li><a href='https://ubc.zoom.us/j/66990886865?pwd=gbqFt68O7mQ7eba64jlS53KnIgCmH0.1'>Zoom Link: https://ubc.zoom.us/j/66990886865?pwd=gbqFt68O7mQ7eba64jlS53KnIgCmH0.1 </a></li>
-<li><a href='https://amsubc-my.sharepoint.com/:f:/g/personal/archasst_ams_ubc_ca/IgClIYjrCdF_SYPhWLsDp1biAYHwXO9bnuiQvoO7EAFIHT8?e=nMcc52'>Council documents folder </a></li>
+<li><a href='https://ubc.zoom.us/j/68889737970?pwd=3ghB6kyCW0ATbPbok1WWCZJCZ3IWe6.1'>Zoom link: https://ubc.zoom.us/j/68889737970?pwd=3ghB6kyCW0ATbPbok1WWCZJCZ3IWe6.1 </a></li>
 </ul>]]></content:encoded>
 </item>
 </channel>  </rss>
