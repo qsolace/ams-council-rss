@@ -6,21 +6,21 @@ xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <title>AMS Council Agenda Feed</title>
   <link>https://www.ams.ubc.ca/about-us/student-council/agendas-presentations-minutes/</link>
   <description>A feed that parses the agendas for AMS Council</description>
-<lastBuildDate >Tue, 24 Feb 2026 19:40:36 GMT</lastBuildDate>
+<lastBuildDate >Wed, 25 Feb 2026 03:28:02 GMT</lastBuildDate>
 <item>
-<title >AMS Council Agenda – February 11, 2026 at 6:00 PM</title>
-<guid isPermaLink="false">AMS Council Agenda – February 11, 2026 at 6:00 PM</guid>
-<link >https://amsubc-my.sharepoint.com/:w:/g/personal/archasst_ams_ubc_ca/IQDJ5ZLL1md9RqBoiafN3V-0AdSKJradk8u10uSNabvoaQQ?e=ZHdtLm</link>
+<title >AMS Council Agenda – February 25, 2026</title>
+<guid isPermaLink="false">AMS Council Agenda – February 25, 2026</guid>
+<link >https://amsubc-my.sharepoint.com/:b:/g/personal/archasst_ams_ubc_ca/IQA2aYWq9ftvRKBgtaegClUBAezZjoXIK3fWgeqkkgOelTE?e=cuGgLQ</link>
 <description >Successfully linked agenda. 2 supporting documents.</description>
 <source url="https://qsolace.github.io/ams-council-rss/feeds/agenda-feed.rss">Qsolace :)</source>
-<pubDate >Wed, 11 Feb 2026 18:00:00 GMT</pubDate>
+<pubDate >Wed, 25 Feb 2026 00:00:00 GMT</pubDate>
 <content:encoded >
 <![CDATA[
 <h1>Redirecting</h1>
 <h2>Supporting Documents</h2>
 <ul>
-<li><a href='https://ubc.zoom.us/j/66990886865?pwd=gbqFt68O7mQ7eba64jlS53KnIgCmH0.1'>Zoom Link: https://ubc.zoom.us/j/66990886865?pwd=gbqFt68O7mQ7eba64jlS53KnIgCmH0.1 </a></li>
-<li><a href='https://amsubc-my.sharepoint.com/:f:/g/personal/archasst_ams_ubc_ca/IgCtLsS83xdZQKxOCRnn0V1sAbhD1SLARU_oAkX_X3OJXuM?e=7YVf0s'>Council documents folder </a></li>
+<li><a href='https://ubc.zoom.us/j/66990886865?pwd=gbqFt68O7mQ7eba64jlS53KnIgCmH0.1'>Zoom Link: https://ubc.zoom.us/j/66990886865?pwd=gbqFt68O7mQ7eba64jlS53KnIgCmH0.1  </a></li>
+<li><a href='https://amsubc-my.sharepoint.com/:f:/g/personal/archasst_ams_ubc_ca/IgAFJuSwi066R6dzV_PF0FrfAR2_vyXj2J_UNgqxlbZVORI?e=GG4nb2'>Council Documents </a></li>
 </ul>]]></content:encoded>
 </item>
 </channel>  </rss>
